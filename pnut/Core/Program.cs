@@ -8,7 +8,11 @@ namespace pnut
 {
 	static class Program
 	{
+<<<<<<< HEAD
 		// Testing merges
+=======
+/// eto1302's edit to test merging
+>>>>>>> origin/main
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
