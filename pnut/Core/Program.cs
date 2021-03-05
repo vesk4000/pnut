@@ -14,6 +14,7 @@ namespace pnut
 		/// not testing a test
 		/// <summary>
 		/// The main entry point for the application.
+///stfu vesk you a fag
 		/// </summary>
 		[STAThread]
 		static void Main()
