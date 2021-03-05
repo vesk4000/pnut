@@ -8,6 +8,7 @@ namespace pnut
 {
 	static class Program
 	{
+/// eto1302's edit to test merging
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
