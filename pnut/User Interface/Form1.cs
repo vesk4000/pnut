@@ -19,7 +19,7 @@ namespace pnut
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Compiler.Compile("file.cpp");
+			Compiler.Compile(@"C:\Vesk\Informatics\test.cpp", @"C:\MinGW\bin\g++.exe");
 		}
 	}
 }
