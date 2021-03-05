@@ -11,7 +11,7 @@ namespace pnut
 
 
 
-		/// not testing
+		/// not testing a test
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
