@@ -9,7 +9,7 @@ namespace pnut
 	static class Program
 	{
 
-		/// testing more merges
+		/// testing even more merges
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
