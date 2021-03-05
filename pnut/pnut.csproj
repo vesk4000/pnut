@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackEnd\Compiler.cs" />
+    <Compile Include="Back End\Compiler.cs" />
     <Compile Include="User Interface\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
