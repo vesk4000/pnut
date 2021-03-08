@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Back End\Compiler.cs" />
+    <Compile Include="Back End\Global.cs" />
+    <Compile Include="Back End\Problem.cs" />
+    <Compile Include="Back End\Settings.cs" />
+    <Compile Include="Back End\Test.cs" />
     <Compile Include="User Interface\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
