@@ -154,7 +154,7 @@ namespace pnut
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(423, 272);
+			this.button2.Location = new System.Drawing.Point(423, 303);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(114, 27);
 			this.button2.TabIndex = 12;
@@ -164,9 +164,9 @@ namespace pnut
 			// 
 			// Form1
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1096, 567);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			this.ClientSize = new System.Drawing.Size(1099, 617);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button_browse_folder_tests);
 			this.Controls.Add(this.textbox_folder_tests);
