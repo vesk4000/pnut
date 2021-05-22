@@ -3,39 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.IO;
+using Spectre.Console;
+using System.Diagnostics;
+using System.Threading;
 
 namespace pnut
 {
 	class Compiler
 	{
-		// To Do: Everything...
-		public static void Compile(string source_path, string exe_path = null)
-		{
-			if (!File.Exists(source_path)) {
-				Debug.WriteLine("Source file does not exist. Aborting compilation.");
-				return;
+		static string GppPath = @"C:\MinGW\bin\g++.exe";
+		public static bool Compile(string source, string target = null) {
+			Console.WriteLine("Compiler thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+			if (!File.Exists(source)) {
+				AnsiConsole.MarkupLine("[red]Source file does not exist. Aborting compilation.[/]");
+				return false;
 			}
 
-			if (!File.Exists(Settings.GppPath)) {
-				Debug.WriteLine("G++ path is not correct. Aborting compilation.");
-				return;
+			if (!File.Exists(GppPath)) {
+				AnsiConsole.MarkupLine("[red]G++ compiler path is not correct. Aborting compilation.[/]");
+				return false;
 			}
 
-			if(exe_path == null)
-				exe_path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Desktop\Compiled.exe";
+			if (target == null)
+				target = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Desktop\Compiled.exe";
 
-			if (File.Exists(exe_path))
-				File.Delete(exe_path);
+			Console.WriteLine("Will start sleepin");
+			Thread.Sleep(2000);
 
+			AnsiConsole.MarkupLine(target);
+
+			if (File.Exists(target))
+				File.Delete(target);
+
+			Process gpp = new Process();
+			gpp.StartInfo.FileName = GppPath;
+			gpp.StartInfo.UseShellExecute = false;
+			gpp.StartInfo.WorkingDirectory = Path.GetDirectoryName(source);
+			gpp.StartInfo.Arguments = "\"" + Path.GetFileName(source) + "\"" + " -o " + "\"" + target + "\""/* + " -static-libgcc -static-libstdc++"*/;
+			gpp.Start();
+			gpp.WaitForExit();
+
+			/*
 			Process cmd = new Process();
 			cmd.StartInfo.FileName = "cmd.exe";
 			cmd.StartInfo.UseShellExecute = false; // Some shit the program needs to work
 
 			// Hide the cmd window
-			cmd.StartInfo.CreateNoWindow = true;
-			cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+			//cmd.StartInfo.CreateNoWindow = true;
+			//cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
 			// Redirect the input to write commands
 			cmd.StartInfo.RedirectStandardInput = true;
@@ -46,25 +62,26 @@ namespace pnut
 
 			//Change to the drive where g++ is
 			string t;
-			t = Settings.GppPath.Substring(0, 2);
+			t = GppPath.Substring(0, 2);
 			t.ToLower();
 			cmd.StandardInput.WriteLine(t);
 
 			//Go to where g++ is
-			Settings.GppPath = Settings.GppPath.Replace("\\g++.exe", "");
-			cmd.StandardInput.WriteLine("cd " + Settings.GppPath);
+			GppPath = GppPath.Replace("\\g++.exe", "");
+			cmd.StandardInput.WriteLine("cd " + GppPath);
 
 			//Compile
-			cmd.StandardInput.WriteLine("g++ " + "\"" + source_path + "\"" + " -o " + "\"" + exe_path + "\"" + " -static-libgcc -static-libstdc++");
+			cmd.StandardInput.WriteLine("g++ " + "\"" + source + "\"" + " -o " + "\"" + target + "\"" + " -static-libgcc -static-libstdc++");
 
-			Debug.WriteLine("Compiling...");
+			AnsiConsole.MarkupLine("Compiling...");
 
 			//Close the cmd
 			cmd.StandardInput.Flush();
 			cmd.StandardInput.Close();
-			cmd.WaitForExit();
+			cmd.WaitForExit();*/
 
-			Debug.WriteLine("Compiled");
+			AnsiConsole.MarkupLine("Compiled");
+			return true;
 		}
 	}
 }
