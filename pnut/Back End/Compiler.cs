@@ -10,28 +10,25 @@ using System.Threading;
 
 namespace pnut
 {
-	class Compiler
-	{
+	class Compiler {
 		static string GppPath = @"C:\MinGW\bin\g++.exe";
-		public static bool Compile(string source, string target = null) {
-			Console.WriteLine("Compiler thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
-			if (!File.Exists(source)) {
-				AnsiConsole.MarkupLine("[red]Source file does not exist. Aborting compilation.[/]");
+		public static bool Compile(string source, string target) {
+			if (target == null) {
+				AnsiConsole.MarkupLine("[red]PNUT Compiler: Target (executable) file path is not valid. Aborting compilation.[/]");
 				return false;
 			}
-
-			if (!File.Exists(GppPath)) {
-				AnsiConsole.MarkupLine("[red]G++ compiler path is not correct. Aborting compilation.[/]");
+			if (Utilities.HasNonASCIIChars(target)) {
+				AnsiConsole.MarkupLine("[red]PNUT Compiler: The target (executable) file path contains non-ASCII characters. Aborting compilation.[/]");
 				return false;
 			}
-
-			if (target == null)
-				target = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Desktop\Compiled.exe";
-
-			Console.WriteLine("Will start sleepin");
-			Thread.Sleep(2000);
-
-			AnsiConsole.MarkupLine(target);
+			if (source == null || !File.Exists(source)) {
+				AnsiConsole.MarkupLine("[red]PNUT Compiler: Source file does not exist. Aborting compilation.[/]");
+				return false;
+			}
+			if (GppPath == null || !File.Exists(GppPath)) {
+				AnsiConsole.MarkupLine("[red]PNUT Compiler: Path to the G++ compiler is not correct. Aborting compilation.[/]");
+				return false;
+			}
 
 			if (File.Exists(target))
 				File.Delete(target);
@@ -40,47 +37,12 @@ namespace pnut
 			gpp.StartInfo.FileName = GppPath;
 			gpp.StartInfo.UseShellExecute = false;
 			gpp.StartInfo.WorkingDirectory = Path.GetDirectoryName(source);
-			gpp.StartInfo.Arguments = "\"" + Path.GetFileName(source) + "\"" + " -o " + "\"" + target + "\""/* + " -static-libgcc -static-libstdc++"*/;
+			gpp.StartInfo.Arguments = $@"""{Path.GetFileName(source)}"" -o ""{target}"" -O3";
 			gpp.Start();
 			gpp.WaitForExit();
 
-			/*
-			Process cmd = new Process();
-			cmd.StartInfo.FileName = "cmd.exe";
-			cmd.StartInfo.UseShellExecute = false; // Some shit the program needs to work
-
-			// Hide the cmd window
-			//cmd.StartInfo.CreateNoWindow = true;
-			//cmd.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-
-			// Redirect the input to write commands
-			cmd.StartInfo.RedirectStandardInput = true;
-			cmd.StartInfo.RedirectStandardOutput = true;
-
-			// Start the program
-			cmd.Start();
-
-			//Change to the drive where g++ is
-			string t;
-			t = GppPath.Substring(0, 2);
-			t.ToLower();
-			cmd.StandardInput.WriteLine(t);
-
-			//Go to where g++ is
-			GppPath = GppPath.Replace("\\g++.exe", "");
-			cmd.StandardInput.WriteLine("cd " + GppPath);
-
-			//Compile
-			cmd.StandardInput.WriteLine("g++ " + "\"" + source + "\"" + " -o " + "\"" + target + "\"" + " -static-libgcc -static-libstdc++");
-
-			AnsiConsole.MarkupLine("Compiling...");
-
-			//Close the cmd
-			cmd.StandardInput.Flush();
-			cmd.StandardInput.Close();
-			cmd.WaitForExit();*/
-
-			AnsiConsole.MarkupLine("Compiled");
+			if (!File.Exists(target))
+				return false;
 			return true;
 		}
 	}

@@ -65,6 +65,8 @@
     <Compile Include="Back End\Compiler.cs" />
     <Compile Include="Back End\Judge.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Misc\Settings.cs" />
+    <Compile Include="Misc\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

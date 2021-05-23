@@ -22,12 +22,16 @@ namespace pnut
 				if (s == "end")
 					break;
 				if (s == "compile") {
-					Console.WriteLine("Main thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
-					Task<bool> tsk = Task.Run(() => Compiler.Compile(@"C:\Users\Vesk\Desktop\Информатика\Hello World.cpp", @"C:\Users\Vesk\Desktop\Hello World.exe"));
+					//Console.WriteLine("Main thread: " + System.Threading.Thread.CurrentThread.ManagedThreadId);
+					Task.Run(() => Compiler.Compile(@"C:\Users\Vesk\Desktop\Информатика\Hello World.cpp", @"C:\Users\Vesk\Desktop\Hello World.exe"));
 					Console.WriteLine("Main continues");
 				}
 					
 			}
+			/*
+			string z = Console.ReadLine();
+			Console.WriteLine(Utilities.HasNonASCIIChars(z));
+			*/
 			Console.ReadKey();
 		}
 	}
