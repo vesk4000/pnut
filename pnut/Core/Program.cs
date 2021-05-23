@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Spectre.Console;
+using System.Xml.Linq;
 
 namespace pnut
 {
@@ -16,7 +17,14 @@ namespace pnut
 			// Да го бях правил директно с thread-ове, сиг по-лесно щеше да стане
 			Console.InputEncoding = Encoding.Unicode;
 			Console.OutputEncoding = Encoding.Unicode;
-			AnsiConsole.MarkupLine("[lightseagreen]Hello World![/]");
+			/*Settings.GppPath = @"C:\MinGW\bin\g++.exe";
+			Console.WriteLine(Settings.GppPath);
+			/*XDocument xdoc = new XDocument();
+			/*xdoc.Add(new XElement("key", "value"));
+			xdoc.Save(@"C:\Users\Vesk\Desktop\xdoc.xml");*/
+			/*xdoc = XDocument.Load(@"C:\Users\Vesk\Desktop\xdoc.xml");
+			Console.WriteLine(((XElement)xdoc.Root.Descendants().Where(s => s.Name == "key").ToArray()[0]).Value);
+			/*AnsiConsole.MarkupLine("[lightseagreen]Hello World![/]");
 			while(true) {
 				string s = Console.ReadLine();
 				if (s == "end")

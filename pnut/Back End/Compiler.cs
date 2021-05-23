@@ -11,7 +11,6 @@ using System.Threading;
 namespace pnut
 {
 	class Compiler {
-		static string GppPath = @"C:\MinGW\bin\g++.exe";
 		public static bool Compile(string source, string target) {
 			if (target == null) {
 				AnsiConsole.MarkupLine("[red]PNUT Compiler: Target (executable) file path is not valid. Aborting compilation.[/]");
@@ -25,7 +24,7 @@ namespace pnut
 				AnsiConsole.MarkupLine("[red]PNUT Compiler: Source file does not exist. Aborting compilation.[/]");
 				return false;
 			}
-			if (GppPath == null || !File.Exists(GppPath)) {
+			if (Settings.GppPath == null || !File.Exists(Settings.GppPath)) {
 				AnsiConsole.MarkupLine("[red]PNUT Compiler: Path to the G++ compiler is not correct. Aborting compilation.[/]");
 				return false;
 			}
@@ -34,7 +33,7 @@ namespace pnut
 				File.Delete(target);
 
 			Process gpp = new Process();
-			gpp.StartInfo.FileName = GppPath;
+			gpp.StartInfo.FileName = Settings.GppPath;
 			gpp.StartInfo.UseShellExecute = false;
 			gpp.StartInfo.WorkingDirectory = Path.GetDirectoryName(source);
 			gpp.StartInfo.Arguments = $@"""{Path.GetFileName(source)}"" -o ""{target}"" -O3";
