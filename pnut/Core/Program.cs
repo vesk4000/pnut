@@ -15,8 +15,19 @@ namespace pnut
 			// Asynchronous programming in C# is simply retarded
 			// Тез не можаха по-малоумно да ги измислят
 			// Да го бях правил директно с thread-ове, сиг по-лесно щеше да стане
-			Console.InputEncoding = Encoding.Unicode;
-			Console.OutputEncoding = Encoding.Unicode;
+			/*Console.InputEncoding = Encoding.Unicode;
+			Console.OutputEncoding = Encoding.Unicode;*/
+			Task tsk = Task.Run(() => Judge.Run());
+			while(true) {
+				string exe = @"C:\Users\Vesk\Desktop\basic1.exe";
+				Compiler.Compile(@"C:\Vesk\School\Информатика\pnut\Tests\Basic 1\basic1.cpp", exe);
+				Test test = new Test(@"C:\Vesk\School\Информатика\pnut\Tests\Basic 1\basic1.in",
+					@"C:\Vesk\School\Информатика\pnut\Tests\Basic 1\basic1.out");
+				Problem problem = new Problem(256, 500);
+				Console.WriteLine(Executor.Execute(exe, test, problem));
+			}
+			
+			//Console.WriteLine(Executor.Execute(exe, test, problem));
 			/*Settings.GppPath = @"C:\MinGW\bin\g++.exe";
 			Console.WriteLine(Settings.GppPath);
 			/*XDocument xdoc = new XDocument();

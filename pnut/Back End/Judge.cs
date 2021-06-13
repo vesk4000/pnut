@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace pnut
 {
-	class Judge
-	{
+	class Judge {
+		public static void Run() {
+			while(true) {
+				string s = Console.ReadLine();
+				//Console.OutputEncoding = Encoding.Unicode;
+				Console.WriteLine(s);
+				//Console.WriteLine(Console.OutputEncoding);
+			}
+		}
 	}
 }
