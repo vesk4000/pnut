@@ -10,13 +10,12 @@ namespace pnut
 {
 	class Program
 	{
-		static void Main(string[] args) {
+		static void FormerMain(string[] args) {
 			// Vesk's debug adventures
 			// Asynchronous programming in C# is simply retarded
 			// Тез не можаха по-малоумно да ги измислят
 			// Да го бях правил директно с thread-ове, сиг по-лесно щеше да стане
-			Console.InputEncoding = Encoding.Unicode;
-			Console.OutputEncoding = Encoding.Unicode;
+			
 			/*Settings.GppPath = @"C:\MinGW\bin\g++.exe";
 			Console.WriteLine(Settings.GppPath);
 			/*XDocument xdoc = new XDocument();
@@ -40,7 +39,6 @@ namespace pnut
 			string z = Console.ReadLine();
 			Console.WriteLine(Utilities.HasNonASCIIChars(z));
 			*/
-			Console.ReadKey();
 		}
 	}
 }
