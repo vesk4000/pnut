@@ -1,0 +1,149 @@
+ ----- P.N.U.T. Design Doc -----
+
+# OOP
+class Entity:
+	name
+
+class Contestant -> Entity:
+	group -> string
+	etc...
+	sources -> string // folder with sources of the contestant
+
+class Problem -> Entity:
+	memory_limit
+	time_limit
+	points
+	tests -> List<Test>
+
+class Test:
+	input_file
+	output_file
+
+class Assingment:
+	contestant -> Contestant
+	problem -> Problem
+	source
+	executable
+	tests -> List<AssingmentTest>
+	ToJudge -> bool
+	ToDelete -> bool
+	JudgeNext():
+		// Compile if the source code of the assignment hasn't yet been compiled
+		// Judge a test from test by running Executor.Execute()
+
+class AssingmentTest:
+	result -> TestResult
+	test -> Test
+
+// For further types of problems (if we do them) extend the Problem,
+// Test, Assingment, Compiler, Executor and (maybe) AssingmentTest classes
+
+enum TestResult:
+	TBD
+	OK
+	WA
+	TL
+	ML
+	CE
+	RE
+
+static class Judge:
+	contestants -> List<Contestant>
+	problems -> List<Problem>
+	assignments -> List<Assingment>
+	completed_assignments -> List<Assingment>
+	num_parallel_threads -> int
+	Run():
+		// Delete assignments which are marked with ToDelete
+		// Judge at most num_parallel_threads assignments (which haven't been judged) at
+		// the same time by running the assignment's JudgeNext() function
+
+static class Compiler:
+	Compile()
+	// Maybe some (private) auxiliary functions
+
+static class Executor:
+	Execute()
+	// Maybe some (private) auxiliary functions
+
+static class CLI:
+	Run()
+
+public class CommandAttribute -> Attribute:
+	names -> List<string> // property
+	help_title -> string // property
+	help_description -> string // property
+
+static class Commands:
+	// Use the command attribute to set the string name of each command
+	// and the help descriptions for each command
+	CmdHelp(args -> string) -> bool
+	CmdJudge(args -> string) -> bool
+	CmdProblem(args -> string) -> bool
+	CmdContestant(args -> string) -> bool
+	CmdDelete(args -> string) -> bool
+	etc...
+
+class ProgressBar
+etc... (other helpful CLI Components)
+
+
+# Folder Structure
+Core
+	Program.cs
+Objects
+	Entity
+		Entity.cs
+	Contestant
+		Contestant.cs
+	Problem
+		Problem.cs
+		Test.cs
+	Assingment
+		Assingment.cs
+		AssingmentTest.cs
+		TestResult.cs
+BackEnd
+	Judge.cs
+	Compiler.cs
+	Executor.cs
+CLI
+	CLI.cs
+	CommandAttribute.cs
+	Commands.cs
+	ProgressBar.cs
+	etc...
+
+
+# Command Line Interface
+PNUT> problem SomeStupidName "C:/Desktop/Folder With Tests" -tl 0.5 -ml 256
+// Each time we call a command we get it's function from the command attributes
+// We split the command with spaces (except when there are quotes)
+// We pass those arguments to the function
+// The function deals with them
+// And returns true if the command executed successfully
+
+PNUT> help
+// Lists commands
+
+PNUT> help problem
+// Lists description of the problem command
+
+PNUT> judge
+// Lists a table with dynamic progress bars
+
+// Once you start judging something a table with dynamic information looking something like this should appear
+Contestant  | Group | Problem   | Points | Status
+John Cena     ASD     plz_cout0   50/100   100% [++++++++++++++++++++++++++++++]
+                      free_pts    TBD      5%   [+-----------------------------]
+Johnny Cena   B       plz_cout0   TBD      0%   [------------------------------]
+                      free_pts    TBD      0%   [------------------------------]     
+// The progress bar should be made by colour coding a bunch of this '━' character
+// something like grey for the portion of tests (percentage) that haven't been judged
+// green - OK
+// red - Wrong Answer
+// purple - Compilation Error (so basically the whole progress bar will go purple)
+// blue - Runtime Error
+// orange - Time Limit
+// yellow - Memory Limit
+// these colours aren't set in stone, idc tbh just an example

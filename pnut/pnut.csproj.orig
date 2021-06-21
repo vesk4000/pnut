@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Spectre.Console, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Spectre.Console.0.40.0\lib\netstandard2.0\Spectre.Console.dll</HintPath>
     </Reference>
@@ -62,21 +65,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="BackEnd\Compiler.cs" />
-    <Compile Include="BackEnd\Executor.cs" />
-    <Compile Include="BackEnd\Judge.cs" />
-    <Compile Include="CLI\CommandLineInterface.cs" />
-    <Compile Include="CLI\Commands.cs" />
-=======
     <Compile Include="Back End\Compiler.cs" />
     <Compile Include="Back End\Executor.cs" />
     <Compile Include="Back End\Judge.cs" />
->>>>>>> 743f74257e7e46a318ed883d4b3df842121379ba
     <Compile Include="Core\Program.cs" />
-    <Compile Include="CLI\CommandInterpreter.cs" />
-    <Compile Include="CLI\InputReader.cs" />
-    <Compile Include="CLI\OutputWriter.cs" />
+    <Compile Include="Data\Data.cs" />
+    <Compile Include="IO\CommandInterpreter.cs" />
+    <Compile Include="IO\InputReader.cs" />
+    <Compile Include="IO\OutputWriter.cs" />
+    <Compile Include="Launcher.cs" />
     <Compile Include="Misc\Settings.cs" />
     <Compile Include="Misc\Utilities.cs" />
 <<<<<<< HEAD
