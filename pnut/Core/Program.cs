@@ -10,7 +10,11 @@ namespace pnut
 {
 	class Program
 	{
-		static void FormerMain(string[] args) {
+		static void Main(string[] args) {
+
+			CommandLineInterface.Run();
+
+			
 			// Vesk's debug adventures
 			// Asynchronous programming in C# is simply retarded
 			// Тез не можаха по-малоумно да ги измислят

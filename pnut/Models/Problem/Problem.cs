@@ -8,7 +8,7 @@ namespace pnut
 {
     public class Problem : Entity
     {
-        public double MemoryLimit { get; private set; }
+        public int MemoryLimit { get; private set; }
 
         public double TimeLimit { get; private set; }
 
@@ -16,7 +16,7 @@ namespace pnut
 
         public List<Test> Tests { get; private set; }
 
-        public Problem(string name, double memoryLimit, double timeLimit, double points, List<Test> tests) : base(name)
+        public Problem(string name, int memoryLimit, double timeLimit, double points, List<Test> tests) : base(name)
         {
             MemoryLimit = memoryLimit;
             TimeLimit = timeLimit;

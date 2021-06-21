@@ -8,13 +8,11 @@ namespace pnut
 {
     public class Test
     {
-        public string InputFileDirectory { get; private set; }
-        public string OutputFileDirectory { get; private set; }
+		public string input, output;
 
-        public Test(string inputFileDirectory, string outputFileDirectory)
-        {
-            InputFileDirectory = inputFileDirectory;
-            OutputFileDirectory = outputFileDirectory;
-        }
-    }
+		public Test(string input, string output) {
+			this.input = input;
+			this.output = output;
+		}
+	}
 }

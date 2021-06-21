@@ -10,14 +10,14 @@ namespace pnut
 {
     public static class CommandInterpreter
     {
-        public static void InterpredCommand(string input)
+        /*public static void InterpredCommand(string input)
         {
             string[] data = input.Split(' ');
             string command = data[0];
             switch (command)
             {
                 case "quit":
-                    Data.SaveData();
+                    //Data.SaveData();
                     Environment.Exit(0);
                     break;
                 case "help":
@@ -49,8 +49,8 @@ namespace pnut
                 string timeLimit = data[3];
                 string memoryLimit = data[4];
                 var tests = new List<Test>();
-                var problem = new Problem(problemName, double.Parse(memoryLimit), double.Parse(timeLimit), 100, tests);
-                Data.Problems.Add(problem);
+                var problem = new Problem(problemName, int.Parse(memoryLimit), double.Parse(timeLimit), 100, tests);
+                //Data.Problems.Add(problem);
         }
 
         private static void TryGetProblemHelp()
@@ -84,6 +84,6 @@ namespace pnut
         private static void DisplayInvalidCommandMessage(string input)
         {
             OutputWriter.DisplayException($"The command '{input}' is invalid");
-        }
+        }*/
     }
 }

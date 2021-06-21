@@ -10,7 +10,8 @@ using System.Threading;
 
 namespace pnut
 {
-	class Compiler {
+	class Compiler
+	{
 		public static bool Compile(string source, string target) {
 			if (target == null) {
 				AnsiConsole.MarkupLine("[red]PNUT Compiler: Target (executable) file path is not valid. Aborting compilation.[/]");
