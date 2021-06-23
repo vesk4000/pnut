@@ -8,19 +8,28 @@ namespace pnut
 {
 	static class CommandLineInterface
 	{
-		private static Command[] commands = new Command[] {
-			new Commands.Help()
+		private static Command[] commands = new Command[] { // add new shit here brov don't forget like a dumb fuck
+			new Commands.Help(),
+			new Commands.Exit()
 		};
+
+		public static Command GetCommandByName(string name) {
+			Command ans = null;
+			foreach (Command command in commands)
+				if (command.Names.Contains(name))
+				{
+					ans = command;
+					break;
+				}
+			return ans;
+		}
 
 		public static void RunMainLoop() {
 			while (true) {
 				Console.Write($"pnut> ");
 				string command_line = Console.ReadLine();
-				foreach(Command command in commands)
-					if(command.Names.Contains(GetCommand(command_line))) {
-						command.Run(GetArguments(command_line));
-						break;
-					}
+				Command command = GetCommandByName(GetCommand(command_line));
+				if (command != null) { command.Run(GetArguments(command_line)); Console.WriteLine(); }
 			}
 		}
 
@@ -32,14 +41,14 @@ namespace pnut
 		}
 
 		public static string[] GetArguments(string command_line) {
-			List<string> args = new List<string>();
+			List<string> words = new List<string>();
 			bool inBrackets = false;
 			string currentArg = "";
 			for (int i = 0; i < command_line.Length; i++) {
 				if (inBrackets) {
 					if (command_line[i] == '"') {
 						inBrackets = false;
-						if (currentArg != "") { args.Add(currentArg); currentArg = ""; }
+						if (currentArg != "") { words.Add(currentArg); currentArg = ""; }
 					}
 
 					else currentArg += command_line[i];
@@ -48,21 +57,26 @@ namespace pnut
 				else {
 					if (command_line[i] == '"') {
 						inBrackets = true;
-						if (currentArg != "") { args.Add(currentArg); currentArg = ""; }
+						if (currentArg != "") { words.Add(currentArg); currentArg = ""; }
 						currentArg = "";
 					}
 
 					else {
 						if (command_line[i] == ' ') {
-							if (currentArg != "") { args.Add(currentArg); currentArg = ""; }
+							if (currentArg != "") { words.Add(currentArg); currentArg = ""; }
 						}
 						else currentArg += command_line[i];
 					}
 				}
 			}
 
-			if (currentArg != "") args.Add(currentArg);
-			return args.ToArray();
+			if (currentArg != "") words.Add(currentArg);
+
+			string[] args = new string[words.Count - 1];
+			for (int i = 1; i < words.Count; i++)
+				args[i - 1] = words[i];
+
+			return args;
 		}
 	}
 }
