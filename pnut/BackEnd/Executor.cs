@@ -15,8 +15,8 @@ namespace pnut
 		public static int MonitorInterval = 50;
 
 		static TestResult Monitor(Process process, Problem problem) {
-			while(!process.HasExited) {
-				if(problem.TimeLimit != -1 && !process.HasExited && process.TotalProcessorTime.TotalMilliseconds > problem.TimeLimit) {
+			while (!process.HasExited) {
+				if (problem.TimeLimit != -1 && !process.HasExited && process.TotalProcessorTime.TotalMilliseconds > problem.TimeLimit) {
 					process.Kill();
 					return TestResult.TL;
 				}
@@ -30,7 +30,7 @@ namespace pnut
 		}
 
 		public static TestResult Execute(string executable, Test test, Problem problem) {
-			if(executable == null || !File.Exists(executable)) {
+			if (executable == null || !File.Exists(executable)) {
 				AnsiConsole.MarkupLine("[red]PNUT Executor: Executable file is not valid. Aborting execution.[/]");
 				return TestResult.RE;
 			}
@@ -71,7 +71,7 @@ namespace pnut
 				//Console.WriteLine(solutio);
 				return TestResult.WA;
 			}
-				
+
 			return TestResult.OK;
 		}
 	}

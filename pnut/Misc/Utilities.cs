@@ -12,10 +12,6 @@ namespace pnut
         public static bool HasNonASCIIChars(string str) {
 			return System.Text.Encoding.UTF8.GetByteCount(str) != str.Length;
 		}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 743f74257e7e46a318ed883d4b3df842121379ba
 
 		public static string ConvertToCRLF(string str) {
 			return str.Replace("\r", "").Replace("\n", Environment.NewLine);
@@ -25,10 +21,4 @@ namespace pnut
 			return MegaBytes * 1024 * 1024;
 		}
 	}
-<<<<<<< HEAD
-=======
-=======
-    }
->>>>>>> origin/main
->>>>>>> 743f74257e7e46a318ed883d4b3df842121379ba
 }

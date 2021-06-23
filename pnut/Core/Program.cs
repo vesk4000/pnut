@@ -12,17 +12,16 @@ namespace pnut
 	{
 		static void Main(string[] args) {
 
-			CommandLineInterface.Run();
+			CommandLineInterface.RunMainLoop();
 
 			
 			// Vesk's debug adventures
 			// Asynchronous programming in C# is simply retarded
 			// Тез не можаха по-малоумно да ги измислят
 			// Да го бях правил директно с thread-ове, сиг по-лесно щеше да стане
-<<<<<<< .merge_file_a13908
 			/*Console.InputEncoding = Encoding.Unicode;
 			Console.OutputEncoding = Encoding.Unicode;*/
-			Task tsk = Task.Run(() => Judge.Run());
+			/*Task tsk = Task.Run(() => Judge.Run());
 			while(true) {
 				string exe = @"C:\Users\Vesk\Desktop\basic1.exe";
 				Compiler.Compile(@"C:\Vesk\School\Информатика\pnut\Tests\Basic 1\basic1.cpp", exe);
@@ -30,12 +29,9 @@ namespace pnut
 					@"C:\Vesk\School\Информатика\pnut\Tests\Basic 1\basic1.out");
 				Problem problem = new Problem(256, 500);
 				Console.WriteLine(Executor.Execute(exe, test, problem));
-			}
+			}*/
 			
 			//Console.WriteLine(Executor.Execute(exe, test, problem));
-=======
-			
->>>>>>> .merge_file_a03028
 			/*Settings.GppPath = @"C:\MinGW\bin\g++.exe";
 			Console.WriteLine(Settings.GppPath);
 			/*XDocument xdoc = new XDocument();

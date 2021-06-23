@@ -62,28 +62,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="BackEnd\Compiler.cs" />
     <Compile Include="BackEnd\Executor.cs" />
     <Compile Include="BackEnd\Judge.cs" />
     <Compile Include="CLI\CommandLineInterface.cs" />
-    <Compile Include="CLI\Commands.cs" />
-=======
-    <Compile Include="Back End\Compiler.cs" />
-    <Compile Include="Back End\Executor.cs" />
-    <Compile Include="Back End\Judge.cs" />
->>>>>>> 743f74257e7e46a318ed883d4b3df842121379ba
+    <Compile Include="CLI\Commands\Command.cs" />
+    <Compile Include="CLI\Commands\Help.cs" />
     <Compile Include="Core\Program.cs" />
-    <Compile Include="CLI\CommandInterpreter.cs" />
-    <Compile Include="CLI\InputReader.cs" />
-    <Compile Include="CLI\OutputWriter.cs" />
     <Compile Include="Misc\Settings.cs" />
     <Compile Include="Misc\Utilities.cs" />
-<<<<<<< HEAD
-    <Compile Include="Objects\Assignment\TestResult.cs" />
-    <Compile Include="Objects\Problem\Problem.cs" />
-    <Compile Include="Objects\Problem\Test.cs" />
-=======
     <Compile Include="Models\Assignment\Assignment.cs" />
     <Compile Include="Models\Assignment\AssignmentTest.cs" />
     <Compile Include="Models\Assignment\TestResult.cs" />
@@ -91,7 +78,6 @@
     <Compile Include="Models\Entity\Entity.cs" />
     <Compile Include="Models\Problem\Problem.cs" />
     <Compile Include="Models\Problem\Test.cs" />
->>>>>>> origin/main
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
