@@ -11,7 +11,13 @@ namespace pnut.Commands
     {
         private static List<pnut.Contestant> tempContestants;
         //TODO
-        public Monitor() : base("monitor", "needsDescr", "needsExtDescr")
+        public Monitor() :
+            base("monitor",
+            "Continuously displays and updates the status of the judge",
+            @"Notes:
+The user will not be able to write any commands while in monitor mode
+Pressing enter will return the user to the standard console")
+
         {
 
         }

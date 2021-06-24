@@ -12,7 +12,7 @@ namespace pnut.Commands
             base("export",
             "Exports the results of the judge",
             @"Arguments:
-<file_name (string)> - file name to save")
+<file_name (string)> - name of the file saved")
 
         { }
 

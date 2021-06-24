@@ -11,7 +11,10 @@ namespace pnut.Commands
     {
         private static List<pnut.Contestant> tempContestants;
         //TODO
-        public Status() : base("status", "needsDescr", "needsExtDescr")
+        public Status() :
+            base("status",
+            "Displays the current status of the judge",
+            "")
         {
 
         }

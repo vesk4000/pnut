@@ -18,10 +18,21 @@ namespace pnut.Commands
 
         public override void Run(string[] args)
         {
-            /*for (int i = 0; i < args.Length)
+            HashSet<string> wrongNames = new HashSet<string>();
+
+
+            /*for (int i = 0; i < args.Length; i++)
             {
-                // if (contestant / problem does not exist) Console.WriteLine("Contestant / problem named {0} does not exist!", args[i]);
+                // if ( args[i] is not a contestant / problem) wrongNames.Add(args[i]);
+                // else if ( args[i] is contestant ) delete contestant
+                // else delete problem
             }*/
+
+            foreach (string wrongName in wrongNames)
+            {
+                ConsoleExt.WriteWarning(wrongName + " is not an existing problem / contestant name");
+            }
+
         }
     }
 }
