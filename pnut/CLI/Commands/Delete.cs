@@ -18,7 +18,10 @@ namespace pnut.Commands
 
         public override void Run(string[] args)
         {
-
+            /*for (int i = 0; i < args.Length)
+            {
+                // if (contestant / problem does not exist) Console.WriteLine("Contestant / problem named {0} does not exist!", args[i]);
+            }*/
         }
     }
 }

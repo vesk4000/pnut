@@ -47,16 +47,39 @@ export - exports the results of the judge
                 return;
             }
 
+            HashSet<Command> commandsList = new HashSet<Command>();
+            HashSet<string> wrongCommands = new HashSet<string>();
+
             foreach (string arg in args)
             {
-                Command command = CommandLineInterface.GetCommandByName(arg);
+                /*Command command = CommandLineInterface.GetCommandByName(arg);
                 if (command != null)
                 {
                     Console.WriteLine(string.Join("/", command.Names.ToArray()) + " - " + command.Description);
                     if(command.ExtraDescription != "") Console.WriteLine(command.ExtraDescription);
                     Console.WriteLine();
-                }
+                }*/
+
+                
+                Command command = CommandLineInterface.GetCommandByName(arg);
+                if (command != null) commandsList.Add(command);
+                else wrongCommands.Add(arg);
             }
+
+            foreach (Command actualCommand in commandsList)
+            {
+                Console.WriteLine(string.Join("/", actualCommand.Names.ToArray()) + " - " + actualCommand.Description);
+                if (actualCommand.ExtraDescription != "") Console.WriteLine(actualCommand.ExtraDescription);
+                Console.WriteLine();
+            }
+
+            if(wrongCommands.Count != 0) 
+            {
+                Console.Write(string.Join(" is not a valid command\n", wrongCommands));
+                Console.WriteLine(" is not a valid command");
+            }
+            
+
 
         }
     }
