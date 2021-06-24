@@ -10,7 +10,14 @@ namespace pnut
 	{
 		private static Command[] commands = new Command[] { // add new shit here brov don't forget like a dumb fuck
 			new Commands.Help(),
-			new Commands.Exit()
+			new Commands.Exit(),
+			new Commands.Problem(),
+			new Commands.Contestant(),
+			new Commands.Delete(),
+			new Commands.Save(),
+			new Commands.Load(),
+			new Commands.Judge(),
+			new Commands.Assign()
 		};
 
 		public static Command GetCommandByName(string name) {
@@ -27,7 +34,7 @@ namespace pnut
 		public static void RunMainLoop() {
 			while (true) {
 				Console.Write($"pnut> ");
-				string command_line = Console.ReadLine();
+				string command_line = Console.ReadLine().ToLower();
 				Command command = GetCommandByName(GetCommand(command_line));
 				if (command != null) { command.Run(GetArguments(command_line)); Console.WriteLine(); }
 			}

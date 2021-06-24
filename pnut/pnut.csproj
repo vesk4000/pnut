@@ -66,10 +66,16 @@
     <Compile Include="BackEnd\Executor.cs" />
     <Compile Include="BackEnd\Judge.cs" />
     <Compile Include="CLI\CommandLineInterface.cs" />
+    <Compile Include="CLI\Commands\Assign.cs" />
     <Compile Include="CLI\Commands\Command.cs" />
+    <Compile Include="CLI\Commands\Contestant.cs" />
+    <Compile Include="CLI\Commands\Delete.cs" />
     <Compile Include="CLI\Commands\Exit.cs" />
     <Compile Include="CLI\Commands\Help.cs" />
+    <Compile Include="CLI\Commands\Judge.cs" />
+    <Compile Include="CLI\Commands\Load.cs" />
     <Compile Include="CLI\Commands\Problem.cs" />
+    <Compile Include="CLI\Commands\Save.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Misc\Settings.cs" />
     <Compile Include="Misc\Utilities.cs" />

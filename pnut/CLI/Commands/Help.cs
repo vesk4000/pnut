@@ -50,10 +50,11 @@ export - exports the results of the judge
             foreach (string arg in args)
             {
                 Command command = CommandLineInterface.GetCommandByName(arg);
-                if(command != null)
+                if (command != null)
                 {
                     Console.WriteLine(string.Join("/", command.Names.ToArray()) + " - " + command.Description);
-                    Console.WriteLine(command.ExtraDescription);
+                    if(command.ExtraDescription != "") Console.WriteLine(command.ExtraDescription);
+                    Console.WriteLine();
                 }
             }
 
