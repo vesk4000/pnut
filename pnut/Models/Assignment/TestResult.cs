@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pnut
 {
-    enum TestResult
+    public enum TestResult
     {
         TBD,
         OK,
