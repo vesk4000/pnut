@@ -8,7 +8,7 @@ namespace pnut
 {
 	static class CommandLineInterface
 	{
-		private static Command[] commands = new Command[] { // add new shit here brov don't forget like a dumb fuck
+		public static Command[] commands = new Command[] { 
 			new Commands.Help(),
 			new Commands.Exit(),
 			new Commands.Problem(),

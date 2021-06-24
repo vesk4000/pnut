@@ -60,8 +60,15 @@ export - exports the results of the judge
                     Console.WriteLine();
                 }*/
 
-                
+                if (arg == "*")
+                {
+                    foreach (Command comm in CommandLineInterface.commands)
+                        commandsList.Add(comm);
+                    continue;
+                }
+
                 Command command = CommandLineInterface.GetCommandByName(arg);
+
                 if (command != null) commandsList.Add(command);
                 else wrongCommands.Add(arg);
             }
