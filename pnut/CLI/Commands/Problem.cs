@@ -22,11 +22,14 @@ namespace pnut.Commands
 
         public override void Run(string[] args)
         {
-            if (args.Length > 4) { Console.WriteLine("Too many arguments!"); return; }
+            if (args.Length > 4) {
+                ConsoleExt.WriteError("Too many arguments!");
+                return;
+            }
             if (args.Length < 3) { Console.WriteLine("Too few arguments!"); return; }
 
             decimal tl;
-            if (!decimal.TryParse(args[2], out tl)) { Console.WriteLine("Time limit not valid!"); return; }
+            if (!decimal.TryParse(args[2], out tl)) { ConsoleExt.WriteError("Time limit not valid number!"); return; }
 
             int ml = 256;
             if (args.Length == 4)

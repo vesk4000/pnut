@@ -37,7 +37,7 @@ namespace pnut.Commands
 
                     current.AppendLine(new string('-', 85));
                 }
-                Thread.Sleep(1);
+                Thread.Sleep(1000);
                 Console.Clear();
             }
 

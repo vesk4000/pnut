@@ -80,6 +80,7 @@
     <Compile Include="CLI\Commands\Problem.cs" />
     <Compile Include="CLI\Commands\Save.cs" />
     <Compile Include="CLI\Commands\Status.cs" />
+    <Compile Include="CLI\ConsoleExt.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Misc\Settings.cs" />
     <Compile Include="Misc\Utilities.cs" />
