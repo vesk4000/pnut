@@ -22,15 +22,15 @@ namespace pnut.Commands
 
         public override void Run(string[] args)
         {
-            if (args.Length > 4) { Console.WriteLine("Too many arguments!"); return; };
-            if (args.Length < 3) { Console.WriteLine("Too few arguments!"); return; };
+            if (args.Length > 4) { Console.WriteLine("Too many arguments!"); return; }
+            if (args.Length < 3) { Console.WriteLine("Too few arguments!"); return; }
 
             decimal tl;
-            if (!decimal.TryParse(args[2], out tl)) { Console.WriteLine("Time limit not valid!"); return; };
+            if (!decimal.TryParse(args[2], out tl)) { Console.WriteLine("Time limit not valid!"); return; }
 
             int ml = 256;
             if (args.Length == 4)
-                if (!int.TryParse(args[3], out ml)) { Console.WriteLine("Memory limit not valid!"); return; };
+                if (!int.TryParse(args[3], out ml)) { Console.WriteLine("Memory limit not valid!"); return; }
             
             // file even exists bro?
             // just use try catch and cout some errors

@@ -67,10 +67,12 @@
     <Compile Include="BackEnd\Judge.cs" />
     <Compile Include="CLI\CommandLineInterface.cs" />
     <Compile Include="CLI\Commands\Assign.cs" />
+    <Compile Include="CLI\Commands\Clear.cs" />
     <Compile Include="CLI\Commands\Command.cs" />
     <Compile Include="CLI\Commands\Contestant.cs" />
     <Compile Include="CLI\Commands\Delete.cs" />
     <Compile Include="CLI\Commands\Exit.cs" />
+    <Compile Include="CLI\Commands\Export.cs" />
     <Compile Include="CLI\Commands\Help.cs" />
     <Compile Include="CLI\Commands\Judge.cs" />
     <Compile Include="CLI\Commands\Load.cs" />

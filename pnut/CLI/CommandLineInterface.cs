@@ -17,7 +17,11 @@ namespace pnut
 			new Commands.Save(),
 			new Commands.Load(),
 			new Commands.Judge(),
-			new Commands.Assign()
+			new Commands.Assign(),
+			new Commands.Status(),
+			new Commands.Monitor(),
+			new Commands.Export(),
+			new Commands.Clear()
 		};
 
 		public static Command GetCommandByName(string name) {
