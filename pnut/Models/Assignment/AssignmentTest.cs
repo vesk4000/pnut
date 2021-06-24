@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pnut
 {
-    class AssignmentTest
+    public class AssignmentTest
     {
         public TestResult Result { get; private set; }
         public Test Test { get; private set; }

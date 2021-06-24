@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pnut
 {
-    class Command
+    public class Command
     {
         public readonly HashSet<string> Names;
         public readonly string Description;

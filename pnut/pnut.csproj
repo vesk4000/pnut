@@ -74,8 +74,10 @@
     <Compile Include="CLI\Commands\Help.cs" />
     <Compile Include="CLI\Commands\Judge.cs" />
     <Compile Include="CLI\Commands\Load.cs" />
+    <Compile Include="CLI\Commands\Monitor.cs" />
     <Compile Include="CLI\Commands\Problem.cs" />
     <Compile Include="CLI\Commands\Save.cs" />
+    <Compile Include="CLI\Commands\Status.cs" />
     <Compile Include="Core\Program.cs" />
     <Compile Include="Misc\Settings.cs" />
     <Compile Include="Misc\Utilities.cs" />
