@@ -25,7 +25,7 @@ namespace pnut.Commands
             Console.WriteLine($"|     Contestant     | Group |    Problem    | Points | Status |      Progress      |");
             foreach (var contestant in tempContestants)
             {
-                Console.Write($"|{contestant.Name,-20}|{contestant.Group,-7}|");
+                Console.Write($"|{contestant.Name,-20}|{contestant.Tags[0],-7}|");
                 foreach (var assignment in contestant.GetAssignments())
                 {
                     if (Console.CursorLeft >= 25) Console.Write($"{assignment.Problem.Name,-15}|{assignment.GetPoints(),-8}|{assignment.GetStatus(),-8}|");
@@ -41,26 +41,27 @@ namespace pnut.Commands
         private void InitializeTempData()
         {
             tempContestants = new List<pnut.Contestant>();
-            tempContestants.Add(new pnut.Contestant(
-                "John Doe",
-                'B',
-                "rndDirectory",
-                "Varna",
-                "Bulgaria"
-            ));
-            tempContestants.Add(new pnut.Contestant(
-                "John Doen",
-                'A',
-                "rndDirectory",
-                "Burgas",
-                "Bulgaria"
-            ));
+            /* tempContestants.Add(new pnut.Contestant(
+                 "John Doe",
+                 'B',
+                 "rndDirectory",
+                 "Varna",
+                 "Bulgaria"
+             ));
+             tempContestants.Add(new pnut.Contestant(
+                 "John Doen",
+                 'A',
+                 "rndDirectory",
+                 "Burgas",
+                 "Bulgaria"
+             ));*/
             tempContestants.Add(new pnut.Contestant(
                 "Jane Doe",
-                'D',
                 "rndDirectory",
+                new string[] {
+                "D",
                 "Vratsa",
-                "Bulgaria"
+                "Bulgaria" }
             ));
         }
     }
