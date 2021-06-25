@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace pnut
 {
-	class Judge
+	static class Judge
 	{
+		public static List<Entity> Entities = new List<Entity>();
+		public static readonly object EntitiesLock = new object();
+
 		public static void Run() {
 			while (true) {
 				string s = Console.ReadLine();

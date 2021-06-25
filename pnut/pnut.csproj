@@ -87,8 +87,8 @@
     <Compile Include="Models\Assignment\Assignment.cs" />
     <Compile Include="Models\Assignment\AssignmentTest.cs" />
     <Compile Include="Models\Assignment\TestResult.cs" />
-    <Compile Include="Models\Contestant\Contestant.cs" />
-    <Compile Include="Models\Entity\Entity.cs" />
+    <Compile Include="Models\Contestant.cs" />
+    <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Problem\Problem.cs" />
     <Compile Include="Models\Problem\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
