@@ -12,11 +12,10 @@ namespace pnut.Commands
             base("judge",
             "Judges a set of problems or contestants",
             @"Arguments:
-pnut> judge [problem_name]
-// this judges all the solutions to a specific problem
-pnut> judge [contestant_name]
-// this judges all of a specific contestant's solutions
-")
+pnut> judge <problem_name>
+This judges all the solutions to a specific problem
+pnut> judge <contestant_name>
+This judges all of a specific contestant's solutions")
 
         { }
 

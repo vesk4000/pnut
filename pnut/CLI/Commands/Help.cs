@@ -13,29 +13,27 @@ namespace pnut.Commands
             "Provides a description of pnut's commands",
             @"Arguments:
 [command (string)]
-[command (string)]
-[command (string)]
-...
+
 Examples and notes:
 pnut> help contestant
-*pastes the help description of contestant*
+This displays the help description of contestant
 pnut> help *
-this gives you the descriptions of all commands
+This displays the descriptions of all commands
 
 List of available commands:
 help - Provides a description and usage of punt's commands
-exit/quit - terminates this pnut process
-clear - clears the console
-contestant - adds a new contestant or modifies an existing one
-problem - adds a new problem or modifies an existing one
-delete - deletes an existing problem or contestant
-save - saves the current state of pnut
-load - loads a pnut state
-judge - starts judging a set of problems or contestants
-assign - assigns a problem to contestants
-status - prints the current status of the judge
-monitor - continuously prints the status
-export - exports the results of the judge
+exit/quit - Terminates this pnut process
+clear - Clears the console
+contestant - Adds a new contestant or modifies an existing one
+problem - Adds a new problem or modifies an existing one
+delete - Deletes an existing problem or contestant
+save - Saves the current state of pnut
+load - Loads a pnut state
+judge - Starts judging a set of problems or contestants
+assign - Assigns a problem to contestants
+status - Prints the current status of the judge
+monitor - Continuously prints the status
+export - Exports the results of the judge
 ") { }
 
         public override void Run(string[] args) {
@@ -60,7 +58,7 @@ export - exports the results of the judge
                     Console.WriteLine();
                 }*/
 
-                if (arg == "*")
+                if (arg == "*" || arg == "all")
                 {
                     foreach (Command comm in CommandLineInterface.commands)
                         commandsList.Add(comm);
@@ -80,13 +78,10 @@ export - exports the results of the judge
                 Console.WriteLine();
             }
 
-            if(wrongCommands.Count != 0) 
+            foreach (string wrongCommand in wrongCommands)
             {
-                Console.Write(string.Join(" is not a valid command\n", wrongCommands));
-                Console.WriteLine(" is not a valid command");
+                ConsoleExt.WriteWarning(wrongCommand + " is not a valid command!");
             }
-            
-
 
         }
     }
