@@ -18,33 +18,13 @@ namespace pnut
 
 		public Assignment[] GetAssignments()
 		{
-			//TODO
-			var result = new Assignment[2];
-			var assTests = new List<AssignmentTest>();
-			assTests.Add(new AssignmentTest(TestResult.OK, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.TBD, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.TL, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.OK, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.WA, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.WA, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.ML, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.CE, new Test("123", "123")));
-			assTests.Add(new AssignmentTest(TestResult.RE, new Test("123", "123")));
-
-			result[0] = new Assignment(this, new Problem("bananaProb", 5,  0.6, 50, new List<Test>()), 
-				SourcesDirectory, "rndDir", assTests, false, false);
-			result[1] = new Assignment(this, new Problem("testProb", 5, 0.6, 75, new List<Test>()),
-				SourcesDirectory, "rndDir", assTests, false, false);
-			return result;
+			List<Assignment> assignments = new List<Assignment>();
+			foreach(Assignment assignment in Judge.Assignments) {
+				if (assignment.Contestant == this)
+					assignments.Add(assignment);
+			}
+			return assignments.ToArray();
 
 		}
-		//public Contestant(string name, char group, string sourcesDirectory, string city, string country) : base(name)
-		//{
-		//    Group = group;
-		//    SourcesDirectory = sourcesDirectory;
-		//    City = city;
-		//    Country = country;
-			
-		//}
 	}
 }

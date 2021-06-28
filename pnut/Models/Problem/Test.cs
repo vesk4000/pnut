@@ -8,9 +8,10 @@ namespace pnut
 {
     public class Test
     {
-		public string input, output;
+		public string name, input, output;
 
-		public Test(string input, string output) {
+		public Test(string name, string input, string output) {
+			this.name = name;
 			this.input = input;
 			this.output = output;
 		}

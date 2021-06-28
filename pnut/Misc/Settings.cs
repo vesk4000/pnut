@@ -13,8 +13,9 @@ namespace pnut
 	{
 		static string xPath; // the path to the settings file
 		static XDocument xDoc; // the settings file
-		
-		public static string GppPath {
+	    public static string GppPath = @"C:\MinGW\bin";
+
+        /*public static string GppPath {
 			get {
 				return xGet("GppPath");
 			}
@@ -24,9 +25,9 @@ namespace pnut
 				else
 					xSet("GppPath", value);
 			}
-		}
+		}*/
 
-		static Settings() {
+        static Settings() {
 			string[] paths = new string[] {
 				Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\pnut\Settings.xml",
 				Directory.GetCurrentDirectory() + @"\Settings.xml"

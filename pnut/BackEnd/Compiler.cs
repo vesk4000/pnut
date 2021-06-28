@@ -37,7 +37,7 @@ namespace pnut
 			gpp.StartInfo.FileName = Settings.GppPath;
 			gpp.StartInfo.UseShellExecute = false;
 			gpp.StartInfo.WorkingDirectory = Path.GetDirectoryName(source);
-			gpp.StartInfo.Arguments = $@"""{Path.GetFileName(source)}"" -o ""{target}"" -O3";
+			gpp.StartInfo.Arguments = $@"""{Path.GetFileName(source)}"" -o ""{target}""";
 			gpp.Start();
 			gpp.WaitForExit();
 

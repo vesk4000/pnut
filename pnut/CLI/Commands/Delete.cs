@@ -12,26 +12,28 @@ namespace pnut.Commands
             base("delete",
             "Deletes an existing problem or contestant",
             @"Arguments:
-<name (string)> - name of the problem/contestant")
+<name (string)> - name of the problem/contestant") { }
 
-        { }
-
-        public override void Run(string[] args)
-        {
+        public override void Run(string[] args) {
             HashSet<string> wrongNames = new HashSet<string>();
+            List<string> deletedNames = new List<string>();
 
+            for (int i = 0; i < args.Length; i++)
+                wrongNames.Add(args[i]);
 
-            /*for (int i = 0; i < args.Length; i++)
-            {
-                // if ( args[i] is not a contestant / problem) wrongNames.Add(args[i]);
-                // else if ( args[i] is contestant ) delete contestant
-                // else delete problem
-            }*/
+            lock (pnut.Judge.EntitiesLock)
+                for (int i = 0; i < pnut.Judge.Entities.Count; ++i) {
+                    if (wrongNames.Remove(pnut.Judge.Entities[i].Name)) {
+                        deletedNames.Add(pnut.Judge.Entities[i].Name);
+                        pnut.Judge.Entities.RemoveAt(i);
+                        i--;
+                    }
+                }
 
             foreach (string wrongName in wrongNames)
-            {
-                ConsoleExt.WriteWarning(wrongName + " is not an existing problem / contestant name");
-            }
+                ConsoleExt.WriteWarning(string.Format("{0} is not a valid contestant / problem name!", wrongName));
+
+            if (deletedNames.Count != 0) ConsoleExt.WriteSuccess(string.Format("Deleted problems / contestants: {0}", string.Join(", ", deletedNames)));
 
         }
     }

@@ -42,10 +42,12 @@ namespace pnut
 			solution.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
 			solution.StartInfo.RedirectStandardInput = true;
 			solution.StartInfo.RedirectStandardOutput = true;
+			solution.StartInfo.WorkingDirectory = @"C:\MinGW\bin";
 
-			string[] input = Utilities.ConvertToCRLF(File.ReadAllText(test.input))
+
+			string[] input = Utilities.ConvertToCRLF(test.input)
 				.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-			string output = Utilities.ConvertToCRLF(File.ReadAllText(test.output));
+			string output = Utilities.ConvertToCRLF(test.output);
 
 			/*Console.InputEncoding = Encoding.Default;
 			Console.OutputEncoding = Encoding.Default;*/
@@ -67,6 +69,10 @@ namespace pnut
 			/*Console.WriteLine(Console.InputEncoding);
 			Console.WriteLine(Console.OutputEncoding);*/
 			//Console.WriteLine(solution.PeakWorkingSet64);
+			solutionOutput = solutionOutput.Replace("\r", "");
+			solutionOutput = solutionOutput.Replace("\n", "");
+			output = output.Replace("\r", "");
+			output = output.Replace("\n", "");
 			if (solutionOutput != output) {
 				//Console.WriteLine(solutio);
 				return TestResult.WA;

@@ -12,16 +12,52 @@ namespace pnut.Commands
             base("list",
             "List all problems or contestants",
             @"Arguments:
-pnut> list contestants - This lists all contestants
-pnut> list problems - This lists all problems")
+[problems|contestants]
+Examples:
+pnut> list contestants
+*This will list all of the contestants*
+pnut> list problems - This lists all problems
+*This will list all of the problems") { }
 
-        { }
+        public override void Run(string[] args) {
+            if (args.Length > 1) {
+                ConsoleExt.WriteError("Too many arguments!");
+                return;
+            }
 
-        public override void Run(string[] args)
-        {
-            if (args.Length != 1) ConsoleExt.WriteError("List command requires an argument!");
-            //if (args[0] == "contestants") lists all contestants
-            //if (args[0] == "problems") lists all problems
+            if (args.Length == 0) {
+                Console.WriteLine("Contestants:");
+                lock (pnut.Judge.EntitiesLock)
+                    foreach (Entity entity in pnut.Judge.Entities) {
+                        if (entity is pnut.Contestant) Console.WriteLine(entity.Name);
+                    }
+
+                Console.WriteLine("Problems:");
+                lock (pnut.Judge.EntitiesLock)
+                    foreach (Entity entity in pnut.Judge.Entities) {
+                        if (entity is pnut.Problem) Console.WriteLine(entity.Name);
+                    }
+
+                return;
+            }
+
+            if (args[0] == "contestants") {
+                Console.WriteLine("Contestants:");
+                lock (pnut.Judge.EntitiesLock)
+                    foreach (Entity entity in pnut.Judge.Entities) {
+                        if (entity is pnut.Contestant) Console.WriteLine(entity.Name);
+                    }
+            }
+
+            else if (args[0] == "problems") {
+                Console.WriteLine("Problems:");
+                lock (pnut.Judge.EntitiesLock)
+                    foreach (Entity entity in pnut.Judge.Entities) {
+                        if (entity is pnut.Problem) Console.WriteLine(entity.Name);
+                    }
+            }
+
+            else ConsoleExt.WriteError("Invalid argument!");
         }
     }
 }

@@ -8,8 +8,8 @@ namespace pnut
 {
     public class AssignmentTest
     {
-        public TestResult Result { get; private set; }
-        public Test Test { get; private set; }
+        public TestResult Result;
+        public Test Test;
 
         public AssignmentTest(TestResult result, Test test)
         {
