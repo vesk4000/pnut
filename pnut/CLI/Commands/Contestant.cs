@@ -9,7 +9,7 @@ namespace pnut.Commands
 {
 	class Contestant : Command
 	{
-		public Contestant() :
+		/*public Contestant() :
 			base("contestant",
 "Adds a new contestant or modifies an existing one",
 @"Contestants can then be assigned problems so their solutions can be judged.
@@ -25,7 +25,25 @@ $@"{ConsoleExt.CommentPrefix}This creates a contestant John, with a source direc
 {ConsoleExt.PnutPromt}contestant Tom C:/Users/Tom/Desktop
 
 {ConsoleExt.PnutPromt}contestant Ben D:/Solutions/Ben ""Anything can be a tag"" You can set as many tags as you want, this line has 14"
-) { }
+) { }*/
+
+		public Contestant() : base(
+"contestant",
+"Add a new contestant or modify an existing one",
+@"Contestants can then be assigned problems so their solutions can be judged.
+Note: Created contestants are not saved after you exit the program.",
+new Argument[] {
+	new Argument("name", typeof(string), "name of the contestant"),
+	new Argument("sources-directory", typeof(DirectoryInfo), "path to the directory with the contestant's solutions"),
+	new Argument("tag", typeof(string), "any tags like group, country, city, etc.")
+},
+$@"{ConsoleExt.CommentPrefix}This creates a contestant John, with a source directory and his tags are B, Varna and Bulgaria[/]
+{ConsoleExt.PnutPromt}contestant John ""C:/John's solutions"" B Varna Bulgaria
+
+{ConsoleExt.PnutPromt}contestant Tom C:/Users/Tom/Desktop
+
+{ConsoleExt.PnutPromt}contestant Ben D:/Solutions/Ben ""Anything can be a tag"" You can set as many tags as you want, this line has 14"
+		) { }
 
 		public override void Run(string[] args) {
 			if (args.Length == 0) {
